@@ -1,0 +1,49 @@
+﻿@model CarMVCProjectAss.Models.Car
+@{
+    ViewBag.Title = "CarForm";
+}
+
+<h2>CarForm</h2>
+@using (Html.BeginForm("Save", "Car"))
+{
+    <div class="form-group">
+        @Html.LabelFor(m => m.VIN)
+        @Html.TextBoxFor(m => m.VIN, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.VIN)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Make)
+        @Html.TextBoxFor(m => m.Make, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Make)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Model)
+        @Html.TextBoxFor(m => m.Model, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Model)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Style)
+        @Html.TextBoxFor(m => m.Style, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Style)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Year)
+        @Html.TextBoxFor(m => m.Year, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Year)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Miles)
+        @Html.TextBoxFor(m => m.Miles, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Miles)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Color)
+        @Html.TextBoxFor(m => m.Color, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Color)
+    </div>
+
+    @Html.HiddenFor(m => m.Id)
+    <button class="btn btn-primary" type="submit">Save</button>
+    <button class="btn btn-primary" type="button">@Html.ActionLink("Back", "Index", null, new { @style = "color: white; text-decoration:none" })</button>
+}
+

@@ -1,0 +1,67 @@
+﻿@model IEnumerable<CarMVCProjectAss.Models.Consumer>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Customer List</h2>
+<br>
+<button class="btn btn-primary">@Html.ActionLink("Create New Customer", "CustForm", null, new { @style = "color: white; text-decoration:none" })</button>
+<hr />
+@using (Html.BeginForm("Save","Consumer"))
+{
+    <p style="padding-left:800px">
+        Search:
+        @Html.RadioButton("RadB", "FirstName")Name
+        @Html.RadioButton("RadB", "Email")Email
+        @Html.RadioButton("RadB", "PhoneNumber")Phone
+    </p>
+    <p style="padding-left:800px">
+        Name  : @Html.TextBox("SearchName")<br />
+        <input class="btn btn-primary" type="submit" value="Search" />
+    </p>
+
+}
+@*FirstName:<input checked="checked"
+       id="RadB"
+       value="FirstName"
+       type="radio"
+       name="Name" />
+<input checked="checked"
+       id="RadB"
+       value="Email"
+       type="radio"
+       name="Email"/>
+<input checked="checked"
+       id="RadB"
+       value="PhoneNumber"
+       type="radio"
+       name="PhoneNumber"/>*@
+
+<table class="table table-bordered table-striped table-hover">
+    <tr>
+        <th>FirstName</th>
+        <th>LastName</th>
+        <th>Email</th>
+        <th>City</th>
+        <th></th>
+        <th></th>
+    </tr>
+
+    @foreach (var m in Model)
+    {
+        <tr>
+            <td>@m.FirstName</td>
+            <td>@m.LastName</td>
+            <td>@m.Email</td>
+            <td>@m.City</td>
+            <td><button class="btn btn-primary">@Html.ActionLink("ViewCar", "CarForm", "Car", m, new { @style = "color: white; text-decoration:none" })</button></td>
+            <td>
+                <button class="btn btn-success">@Html.ActionLink("Details", "Details", new { m.Id }, new { @style = "color: white; text-decoration:none" })</button>
+                <button class="btn btn-danger">@Html.ActionLink("Delete", "Delete", new { m.Id }, new { @style = "color: white; text-decoration:none" })</button>
+                <button class="btn btn-primary">@Html.ActionLink("Edit", "CustForm", m, new { @style = "color: white; text-decoration:none" })</button>
+            </td>
+
+        </tr>
+    }
+</table>
